@@ -1,12 +1,27 @@
 from django.shortcuts import render
+from rest_framework import viewsets
 from django.http import JsonResponse
+from .serializers import BrandSerializer, ProductCategorySerializer, ProductDepartmentSerializer, ProductSerializer, ProductSubCategorySerializer
+from django.views.decorators.csrf import csrf_exempt
+from .models import Product, Brand, ProductDepartment, ProductCategory, ProductSubCategory
 
 # Create your views here.
-def product_list(request):
-    # This is a placeholder view function.
-    # You can replace this with actual logic to fetch and display products.
-    dummy_products = [
-        {'name': 'Product 1', 'description': 'Description of Product 1'},
-        {'name': 'Product 2', 'description': 'Description of Product 2'},
-    ]
-    return JsonResponse({'products': dummy_products})
+class ProductViewSet(viewsets.ModelViewSet):
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
+
+class BrandViewSet(viewsets.ModelViewSet):
+    queryset = Brand.objects.all()
+    serializer_class = BrandSerializer 
+
+class ProductDepartmentViewSet(viewsets.ModelViewSet):
+    queryset = ProductDepartment.objects.all()
+    serializer_class = ProductDepartmentSerializer
+
+class ProductCategoryViewSet(viewsets.ModelViewSet):
+    queryset = ProductCategory.objects.all()
+    serializer_class = ProductCategorySerializer
+
+class ProductSubCategoryViewSet(viewsets.ModelViewSet):
+    queryset = ProductSubCategory.objects.all()
+    serializer_class = ProductSubCategorySerializer
