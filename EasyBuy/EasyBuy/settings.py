@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'drf_yasg',
     'products',
+    'users',
 ]
 
 MIDDLEWARE = [
@@ -53,6 +54,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'EasyBuy.urls'
+AUTH_USER_MODEL = 'users.User'
 
 TEMPLATES = [
     {
