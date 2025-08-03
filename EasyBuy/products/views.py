@@ -1,9 +1,8 @@
 from django.shortcuts import render
 from rest_framework import viewsets
 from django.http import JsonResponse
-from .serializers import BrandSerializer, ProductCategorySerializer, ProductDepartmentSerializer, ProductSerializer, ProductSubCategorySerializer
-from django.views.decorators.csrf import csrf_exempt
-from .models import Product, Brand, ProductDepartment, ProductCategory, ProductSubCategory
+from .serializers import BrandSerializer, ProductCategorySerializer, ProductDepartmentSerializer, ProductSerializer, ProductSubCategorySerializer, ProductVariantSerializer
+from .models import Product, Brand, ProductDepartment, ProductCategory, ProductSubCategory, ProductVariant
 
 # Create your views here.
 class ProductViewSet(viewsets.ModelViewSet):
@@ -25,3 +24,7 @@ class ProductCategoryViewSet(viewsets.ModelViewSet):
 class ProductSubCategoryViewSet(viewsets.ModelViewSet):
     queryset = ProductSubCategory.objects.all()
     serializer_class = ProductSubCategorySerializer
+
+class ProductVariantViewSet(viewsets.ModelViewSet):
+    queryset = ProductVariant.objects.all()
+    serializer_class = ProductVariantSerializer
