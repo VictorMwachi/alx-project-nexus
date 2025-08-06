@@ -1,0 +1,4 @@
+venv
+EasyBuy/*/__pycache__
+EasyBuy/*/*/__pycache__
+EasyBuy/.env
