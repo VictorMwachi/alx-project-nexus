@@ -4,10 +4,11 @@ from django.db import models
 class Wishlist(models.Model):
     user = models.ForeignKey('users.User', on_delete=models.CASCADE, related_name='wishlists')
     product = models.ForeignKey('products.Product', on_delete=models.CASCADE, related_name='wishlists')
+    product_variant = models.ForeignKey('products.ProductVariant', on_delete=models.CASCADE, related_name='wishlists', null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        unique_together = ('user', 'product')
+        unique_together = ('user', 'product', 'product_variant')
 
     def __str__(self):
         return f"{self.user.email} - {self.product.name}"
@@ -15,11 +16,12 @@ class Wishlist(models.Model):
 class Cart(models.Model):
     user = models.ForeignKey('users.User', on_delete=models.CASCADE, related_name='carts')
     product = models.ForeignKey('products.Product', on_delete=models.CASCADE, related_name='carts')
+    product_variant = models.ForeignKey('products.ProductVariant', on_delete=models.CASCADE, related_name='carts', null=True, blank=True)
     quantity = models.PositiveIntegerField(default=1)
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        unique_together = ('user', 'product')
+        unique_together = ('user', 'product', 'product_variant')
 
     def __str__(self):
         return f"{self.user.email} - {self.product.name} (Qty: {self.quantity})"
@@ -37,7 +39,7 @@ class Order(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"Order {self.id} by {self.user.email} for {self.product.name} (Qty: {self.quantity})"
+        return f"Order {self.id} by {self.user.email} - Total: {self.total_price}"
 
 class OrderItem(models.Model):
     order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='items')

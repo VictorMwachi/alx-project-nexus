@@ -86,3 +86,27 @@ class ProductImage(models.Model):
     
     def __str__(self):
         return f"Image {self.image_uuid} for {self.product.name} and variant {self.product_variant.name if self.product_variant else 'N/A'} "
+class ProductReview(models.Model):
+    """
+    Represents a review for a product.
+    Fields:
+        id (AutoField): Primary key for the review.
+        product (ForeignKey): Reference to the related Product instance.
+        user (ForeignKey): Reference to the User who wrote the review.
+        rating (IntegerField): Rating given by the user, from 1 to 5.
+        comment (TextField): Review comment provided by the user.
+        created_at (DateTimeField): Timestamp when the review was created.
+    Methods:
+        __str__(): Returns a string representation of the review, including the product name and user email.
+    """
+    id = models.AutoField(primary_key=True)
+    product = models.ForeignKey(Product, related_name='reviews', on_delete=models.CASCADE)
+    user = models.ForeignKey('users.User', related_name='reviews', on_delete=models.CASCADE)
+    product_variant = models.ForeignKey(ProductVariant, related_name='reviews', on_delete=models.CASCADE, null=True, blank=True)
+    order_item = models.ForeignKey('sales.OrderItem', related_name='reviews', on_delete=models.CASCADE, null=True, blank=True)
+    rating = models.IntegerField(default=1)
+    comment = models.TextField(blank=True, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Review for {self.product.name} by {self.user.email} - Rating: {self.rating}"
