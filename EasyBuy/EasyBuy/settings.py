@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'drf_yasg',
     'products',
     'users',
+    'sales',
 ]
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (

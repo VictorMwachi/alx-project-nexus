@@ -11,7 +11,7 @@ class Wishlist(models.Model):
         unique_together = ('user', 'product', 'product_variant')
 
     def __str__(self):
-        return f"{self.user.email} - {self.product.name}"
+        return f"{self.user.email} - {self.product.description} (Variant: {self.product_variant})"
     
 class Cart(models.Model):
     user = models.ForeignKey('users.User', on_delete=models.CASCADE, related_name='carts')
@@ -49,4 +49,5 @@ class OrderItem(models.Model):
     price = models.DecimalField(max_digits=10, decimal_places=2)
 
     def __str__(self):
-        return f"Item {self.product.name} in Order {self.order.id} (Qty: {self.quantity})"
+        return f"Item {self.product.description} in Order {self.order.id} (Qty: {self.quantity})"
+    
