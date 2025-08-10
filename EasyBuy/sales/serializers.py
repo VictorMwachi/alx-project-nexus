@@ -26,9 +26,6 @@ class OrderSerializer(serializers.ModelSerializer):
         model = Order
         fields = ['id', 'order_uuid', 'user', 'total_price', 'shipping_fee', 'voucher_discount', 'shipping_discount', 'payment_method', 'payment_status', 'created_at', 'items']
 
-    def get_items(self, obj):
-        return OrderItemSerializer(obj.items.all(), many=True).data
-
 class OrderItemSerializer(serializers.ModelSerializer):
     product = ProductSerializer(read_only=True)
     product_variant = ProductVariantSerializer(read_only=True)
