@@ -1,0 +1,51 @@
+id,brand,category,description
+1,Samsung,TV,"Samsung is a popular brand known for producing quality laptop, smartphone, tv, tablet products."
+2,LG,TV,LG is a popular brand known for producing quality tv products.
+3,Sony,TV,"Sony is a popular brand known for producing quality smartphone, tv products."
+4,Panasonic,TV,Panasonic is a popular brand known for producing quality tv products.
+5,Philips,TV,Philips is a popular brand known for producing quality tv products.
+6,TCL,TV,TCL is a popular brand known for producing quality tv products.
+7,Hisense,TV,Hisense is a popular brand known for producing quality tv products.
+8,Sharp,TV,Sharp is a popular brand known for producing quality tv products.
+9,Vizio,TV,Vizio is a popular brand known for producing quality tv products.
+10,Sanyo,TV,Sanyo is a popular brand known for producing quality tv products.
+11,Dell,Laptop,"Dell is a popular brand known for producing quality computer, laptop products."
+12,HP,Laptop,"HP is a popular brand known for producing quality computer, laptop products."
+13,Lenovo,Laptop,"Lenovo is a popular brand known for producing quality computer, laptop, tablet products."
+14,Asus,Laptop,"Asus is a popular brand known for producing quality computer, laptop, tablet products."
+15,Acer,Laptop,"Acer is a popular brand known for producing quality computer, laptop, tablet products."
+16,Apple,Laptop,"Apple is a popular brand known for producing quality computer, laptop, smartphone, tablet products."
+17,Microsoft,Laptop,"Microsoft is a popular brand known for producing quality laptop, tablet products."
+18,MSI,Laptop,"MSI is a popular brand known for producing quality computer, laptop products."
+19,Razer,Laptop,Razer is a popular brand known for producing quality laptop products.
+20,Samsung,Laptop,"Samsung is a popular brand known for producing quality laptop, smartphone, tv, tablet products."
+21,Dell,Computer,"Dell is a popular brand known for producing quality computer, laptop products."
+22,HP,Computer,"HP is a popular brand known for producing quality computer, laptop products."
+23,Lenovo,Computer,"Lenovo is a popular brand known for producing quality computer, laptop, tablet products."
+24,Apple,Computer,"Apple is a popular brand known for producing quality computer, laptop, smartphone, tablet products."
+25,Acer,Computer,"Acer is a popular brand known for producing quality computer, laptop, tablet products."
+26,Asus,Computer,"Asus is a popular brand known for producing quality computer, laptop, tablet products."
+27,MSI,Computer,"MSI is a popular brand known for producing quality computer, laptop products."
+28,Gigabyte,Computer,Gigabyte is a popular brand known for producing quality computer products.
+29,Intel,Computer,Intel is a popular brand known for producing quality computer products.
+30,AMD,Computer,AMD is a popular brand known for producing quality computer products.
+31,Apple,Smartphone,"Apple is a popular brand known for producing quality computer, laptop, smartphone, tablet products."
+32,Samsung,Smartphone,"Samsung is a popular brand known for producing quality laptop, smartphone, tv, tablet products."
+33,Huawei,Smartphone,"Huawei is a popular brand known for producing quality smartphone, tablet products."
+34,Xiaomi,Smartphone,"Xiaomi is a popular brand known for producing quality smartphone, tablet products."
+35,Oppo,Smartphone,Oppo is a popular brand known for producing quality smartphone products.
+36,Vivo,Smartphone,Vivo is a popular brand known for producing quality smartphone products.
+37,Realme,Smartphone,Realme is a popular brand known for producing quality smartphone products.
+38,OnePlus,Smartphone,OnePlus is a popular brand known for producing quality smartphone products.
+39,Google,Smartphone,Google is a popular brand known for producing quality smartphone products.
+40,Sony,Smartphone,"Sony is a popular brand known for producing quality smartphone, tv products."
+41,Apple,Tablet,"Apple is a popular brand known for producing quality computer, laptop, smartphone, tablet products."
+42,Samsung,Tablet,"Samsung is a popular brand known for producing quality laptop, smartphone, tv, tablet products."
+43,Amazon,Tablet,Amazon is a popular brand known for producing quality tablet products.
+44,Huawei,Tablet,"Huawei is a popular brand known for producing quality smartphone, tablet products."
+45,Lenovo,Tablet,"Lenovo is a popular brand known for producing quality computer, laptop, tablet products."
+46,Microsoft,Tablet,"Microsoft is a popular brand known for producing quality laptop, tablet products."
+47,Asus,Tablet,"Asus is a popular brand known for producing quality computer, laptop, tablet products."
+48,Acer,Tablet,"Acer is a popular brand known for producing quality computer, laptop, tablet products."
+49,Xiaomi,Tablet,"Xiaomi is a popular brand known for producing quality smartphone, tablet products."
+50,Alcatel,Tablet,Alcatel is a popular brand known for producing quality tablet products.

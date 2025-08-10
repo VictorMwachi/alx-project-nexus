@@ -1,10 +1,10 @@
-from django.shortcuts import render
 from rest_framework import generics, permissions
-from .serializers import RegisterUserSerializer
-from .models import User
+from .serializers import RegisterUserSerializer, RoleSerializer, UserRoleSerializer, UserProfileSerializer
+from .models import User, Role, UserRole, UserProfile
+
+
 # Create your views here.
 class RegisterUserView(generics.CreateAPIView):
-    queryset = User.objects.all()
     serializer_class = RegisterUserSerializer
     permission_classes = [permissions.AllowAny]
 
@@ -13,3 +13,30 @@ class RegisterUserView(generics.CreateAPIView):
         # Optionally, you can send a welcome email or perform other actions here
         # For example: send_welcome_email(user)
         return user
+
+class UserProfileView(generics.RetrieveUpdateAPIView):
+    serializer_class = UserProfileSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_queryset(self):
+        return UserProfile.objects.filter(user=self.request.user.id)
+
+    def perform_update(self, serializer):
+        user = serializer.save()
+        # Optionally, you can send a notification or perform other actions here
+        # For example: send_profile_update_notification(user)
+        return user
+
+class RoleListView(generics.ListAPIView):
+    serializer_class = RoleSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_queryset(self):
+        return Role.objects.all()
+    
+class UserRoleListView(generics.ListAPIView):
+    serializer_class = UserRoleSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_queryset(self):
+        return UserRole.objects.filter(user=self.request.user)

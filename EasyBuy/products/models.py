@@ -32,7 +32,6 @@ class ProductSubCategory(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=100, unique=True)
     description = models.TextField(blank=True, null=True)
-    stock_quantity = models.PositiveIntegerField(default=0)
     is_active = models.BooleanField(default=True)
     category = models.ForeignKey(ProductCategory, related_name='subcategories', on_delete=models.CASCADE)
 
