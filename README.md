@@ -1,7 +1,3 @@
-Here’s a **README.md** draft for your EasyBuy project based on the content in your slide deck:
-
----
-
 # EasyBuy: A Robust E-commerce API
 
 **A backend foundation for modern online retail.**
