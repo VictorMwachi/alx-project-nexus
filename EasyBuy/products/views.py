@@ -1,11 +1,10 @@
-from django.shortcuts import render
-from rest_framework import viewsets
-from django.http import JsonResponse
+from rest_framework import viewsets, permissions
 from .serializers import BrandSerializer, ProductCategorySerializer, ProductDepartmentSerializer, ProductSerializer, ProductSubCategorySerializer, ProductVariantSerializer
 from .models import Product, Brand, ProductDepartment, ProductCategory, ProductSubCategory, ProductVariant
 
 # Create your views here.
 class ProductViewSet(viewsets.ModelViewSet):
+    permission_classes = [permissions.AllowAny]
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
 
@@ -26,5 +25,6 @@ class ProductSubCategoryViewSet(viewsets.ModelViewSet):
     serializer_class = ProductSubCategorySerializer
 
 class ProductVariantViewSet(viewsets.ModelViewSet):
+    permission_classes = [permissions.AllowAny]
     queryset = ProductVariant.objects.all()
     serializer_class = ProductVariantSerializer
