@@ -112,5 +112,3 @@ Authentication is handled securely with **JSON Web Tokens (JWT)**.
 * Celery & Redis for async tasks
 * Product reviews & ratings
 * Docker + AWS/Heroku deployment
-
-Do you want me to also **include setup & installation instructions** so your README becomes ready for GitHub without further edits? That would make it completely plug-and-play for other developers.
