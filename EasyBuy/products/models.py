@@ -49,7 +49,7 @@ class Product(models.Model):
     subcategory = models.ForeignKey(ProductSubCategory, related_name='products', on_delete=models.CASCADE, null=True, blank=True)
 
     def __str__(self):
-        return self.name
+        return self.description
 
 class ProductVariant(models.Model):
     id = models.AutoField(primary_key=True)
@@ -60,7 +60,7 @@ class ProductVariant(models.Model):
     is_active = models.BooleanField(default=True)
 
     def __str__(self):
-        return f"{self.product.name} - {self.name}"
+        return f"{self.product.description} - {self.name}"
     
 class ProductImage(models.Model):
     """

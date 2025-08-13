@@ -36,6 +36,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     objects = UserManager()
 
     USERNAME_FIELD = 'email'
+    READ_ONLY_FIELDS = ['id', 'user_uuid', 'date_joined']
     REQUIRED_FIELDS = []
 
     def __str__(self):
@@ -80,6 +81,9 @@ class UserRole(models.Model):
     role = models.ForeignKey(Role, on_delete=models.CASCADE, related_name='user_roles')
     assigned_at = models.DateTimeField(auto_now_add=True)
     is_active = models.BooleanField(default=True)
+
+    class Meta:
+        unique_together = ('user', 'role')
 
     def __str__(self):
         return f"{self.user.email} - {self.role.name}"

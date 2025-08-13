@@ -4,11 +4,12 @@ from rest_framework.views import APIView
 from .models import Wishlist, Cart, Order, OrderItem
 from products.models import Product, ProductVariant
 from .serializers import WishlistSerializer, CartSerializer, OrderSerializer, OrderItemSerializer
+from users.permissions import IsBuyerUser
 
 # Create your views here.
 class WishlistView(generics.ListCreateAPIView):
     serializer_class = WishlistSerializer
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.IsAuthenticated, IsBuyerUser]
 
     def get_queryset(self):
         return Wishlist.objects.filter(user=self.request.user)
@@ -24,11 +25,11 @@ class CartView(generics.ListCreateAPIView):
         return Cart.objects.filter(user=self.request.user)
     
 class AddToCartView(APIView):
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.IsAuthenticated, IsBuyerUser]
 
     def post(self, request):
-        product_id = request.data.get("product_id")
-        product_variant_id = request.data.get("product_variant_id")
+        product_id = request.data.get("product")
+        product_variant_id = request.data.get("product_variant")
         quantity = int(request.data.get("quantity", 1))
 
         product = Product.objects.get(id=product_id)
@@ -45,7 +46,7 @@ class AddToCartView(APIView):
 
 
 class RemoveFromCartView(APIView):
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.IsAuthenticated, IsBuyerUser]
 
     def delete(self, request, item_id):
         cart = Cart.objects.filter(user=request.user).first()
@@ -61,7 +62,7 @@ class RemoveFromCartView(APIView):
         return Response({"message": "Item removed"}, status=status.HTTP_200_OK)
 
 class ClearCartView(APIView):
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.IsAuthenticated, IsBuyerUser]
 
     def delete(self, request, *args, **kwargs):
         """Clear all items from user's cart"""
@@ -78,14 +79,14 @@ class ClearCartView(APIView):
 
 class OrderView(generics.ListCreateAPIView):
     serializer_class = OrderSerializer
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.IsAuthenticated, IsBuyerUser]
 
     def get_queryset(self):
         return Order.objects.filter(user=self.request.user)
 
 class OrderItemView(generics.ListCreateAPIView):
     serializer_class = OrderItemSerializer
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.IsAuthenticated,IsBuyerUser]
 
     def get_queryset(self):
         return OrderItem.objects.filter(order__user=self.request.user)

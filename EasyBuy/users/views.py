@@ -1,4 +1,4 @@
-from rest_framework import generics, permissions
+from rest_framework import generics, permissions,viewsets
 from .serializers import RegisterUserSerializer, RoleSerializer, UserRoleSerializer, UserProfileSerializer
 from .models import User, Role, UserRole, UserProfile
 
@@ -27,14 +27,16 @@ class UserProfileView(generics.RetrieveUpdateAPIView):
         # For example: send_profile_update_notification(user)
         return user
 
-class RoleListView(generics.ListAPIView):
+class RoleViewSet(viewsets.ModelViewSet):
+    """A viewset for managing user roles."""
     serializer_class = RoleSerializer
     permission_classes = [permissions.IsAuthenticated]
 
     def get_queryset(self):
         return Role.objects.all()
     
-class UserRoleListView(generics.ListAPIView):
+class UserRoleViewSet(viewsets.ModelViewSet):
+    queryset = UserRole.objects.all()
     serializer_class = UserRoleSerializer
     permission_classes = [permissions.IsAuthenticated]
 
