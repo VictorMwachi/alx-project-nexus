@@ -76,6 +76,22 @@ class ClearCartView(APIView):
                 'total_items': 0
             }
         })
+class CheckoutView(APIView):
+    permission_classes = [permissions.IsAuthenticated, IsBuyerUser]
+
+    def post(self, request):
+        cart_items = Cart.objects.filter(user=request.user)
+        if not cart_items:
+            return Response({"error": "Your cart is empty"}, status=status.HTTP_400_BAD_REQUEST)
+
+        total_price = sum(item.product.price * item.quantity for item in cart_items)
+        order = Order.objects.create(user=request.user, total_price=total_price)
+
+        for item in cart_items:
+            OrderItem.objects.create(order=order, product=item.product, product_variant=item.product_variant, quantity=item.quantity, price=item.product.price)
+            item.delete()  # Clear the cart after creating the order
+
+        return Response(OrderSerializer(order).data, status=status.HTTP_201_CREATED)
 
 class OrderView(generics.ListCreateAPIView):
     serializer_class = OrderSerializer
