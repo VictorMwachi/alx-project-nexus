@@ -35,7 +35,7 @@ The system models core e-commerce concepts with Django ORM managing relationship
 
 * **User** — Authentication & profile data.
 * **Product** — Name, description, price, stock.
-* **Cart & CartItem** — Temporary storage before purchase.
+* **Cart & Wishlist** — Temporary storage before purchase.
 * **Order & OrderItem** — Purchase records linked to products.
 
 **Simplified Relationship Diagram:**
@@ -58,32 +58,44 @@ Authentication is handled securely with **JSON Web Tokens (JWT)**.
 4. **Authorized Requests:** Include Access token in headers
 5. **Token Refresh:** Use Refresh token when Access token expires
 
----
-
 ## 📡 API Endpoints
 
 ### **Authentication**
 
 * `POST /api/users/register/` — Create a new account
-* `POST /api/token/` — Obtain JWT tokens
+* `POST /api/users/login/` — Log into your account
+* `POST /api/users/token/verify/` — Verify JWT token
+* `POST /api/users/token/refresh/` — Refresh JWT token
+* `POST /api/users/logout/` — Log out of your account
+* `GET /api/users/profile/` — Retrieve user profile
+
+---
 
 ### **Products**
 
-* `GET /api/products/items/` — List products
-* `GET /api/products/items/{id}/` — Product details
-
-### **Cart Management** *(Auth Required)*
-
-* `GET /api/sales/cart/` — View cart
-* `POST /api/sales/cart/add/` — Add product to cart
-* `DELETE /api/sales/cart/item/{id}/` — Remove item
-
-### **Order Management** *(Auth Required)*
-
-* `POST /api/sales/orders/create/` — Place order
-* `GET /api/sales/orders/` — Order history
+* `GET /api/products/items/` — List all products
+* `GET /api/products/items/{id}` — Get product details by ID
+* `GET /api/products/variants/` — List product variants
 
 ---
+
+### **Sales** *(Auth Required)*
+
+#### **Wishlist**
+
+* `GET /api/sales/wishlist/` — View wishlist
+
+#### **Cart Management**
+
+* `GET /api/sales/cart/` — View current cart
+* `POST /api/sales/cart/add/` — Add item to cart
+* `DELETE /api/sales/cart/remove/{item_id}/` — Remove item from cart
+* `DELETE /api/sales/cart/clear/` — Clear all cart items
+
+#### **Checkout**
+
+* `POST /api/sales/checkout/` — Proceed to checkout
+
 
 ## 🚧 Challenges & Solutions
 
