@@ -64,24 +64,24 @@ Authentication is handled securely with **JSON Web Tokens (JWT)**.
 
 ### **Authentication**
 
-* `POST /api/register/` — Create a new account
+* `POST /api/users/register/` — Create a new account
 * `POST /api/token/` — Obtain JWT tokens
 
 ### **Products**
 
-* `GET /api/products/` — List products
-* `GET /api/products/{id}/` — Product details
+* `GET /api/products/items/` — List products
+* `GET /api/products/items/{id}/` — Product details
 
 ### **Cart Management** *(Auth Required)*
 
-* `GET /api/cart/` — View cart
-* `POST /api/cart/add/` — Add product to cart
-* `DELETE /api/cart/item/{id}/` — Remove item
+* `GET /api/sales/cart/` — View cart
+* `POST /api/sales/cart/add/` — Add product to cart
+* `DELETE /api/sales/cart/item/{id}/` — Remove item
 
 ### **Order Management** *(Auth Required)*
 
-* `POST /api/orders/create/` — Place order
-* `GET /api/orders/` — Order history
+* `POST /api/sales/orders/create/` — Place order
+* `GET /api/sales/orders/` — Order history
 
 ---
 
